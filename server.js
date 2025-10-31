@@ -1,20 +1,12 @@
-const exprees = require ('mongoose');
 const express = require('express');
-const app = express();
-const port = 3000;
 const mongoose = require('mongoose');
-const express = require('express');
+const Thing = require('./models/Thing');
 const app = express();
 const port = 3000;
-const Thing = require('./models/Thing');
+const cors = require('cors');
+app.use(cors());
 
-app.post('/api/things', async (req, res) => {
-  const thing = new Thing({ name: req.body.name });
-  await thing.save();
-  res.json(thing);
-});
-
-app.use(express.json()); // needed for parsing JSON
+app.use(express.json()); // for parsing application/json
 
 mongoose.connect('mongodb://localhost:27017/mydb', {
   useNewUrlParser: true,
@@ -23,11 +15,18 @@ mongoose.connect('mongodb://localhost:27017/mydb', {
 .then(() => console.log('✅ Connected to MongoDB'))
 .catch((err) => console.error('❌ Failed to connect to MongoDB:', err));
 
-app.listen(port, () => {
-  console.log(`🚀 Server is running on http://localhost:${port}`);
+app.get('/', (req, res) => {
+  res.send('Hello MEAN Stack!');
 });
 
-app.get('/', (req, res) => {
-res.send('Hello MEAN Stack!');
+// Example API route
+app.post('/api/things', async (req, res) => {
+  const thing = new Thing({ name: req.body.name });
+  await thing.save();
+  res.json(thing);
+});
+
+app.listen(port, () => {
+  console.log(`🚀 Server is running on http://localhost:${port}`);
 });
 

@@ -1,0 +1,8 @@
+<h1>MEAN Stack Test</h1>
+
+<input [(ngModel)]="name" placeholder="Enter thing name">
+<button (click)="submitThing()">Submit to API</button>
+
+<div *ngIf="response">
+  <p>Saved Thing: {{ response.name }}</p>
+</div>
