@@ -2,8 +2,10 @@
   "name": "it340-lab7-repo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,12 +15,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Br7274/IT340-Lab-7-Repo/issues"
   },
   "homepage": "https://github.com/Br7274/IT340-Lab-7-Repo#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.3"
   }
 }
